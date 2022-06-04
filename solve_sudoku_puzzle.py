@@ -1,3 +1,19 @@
+def draw_sudoku_puzzle(sudoku_puzzle):
+    split_line = '\n---------------------------------------\n'
+    split_line3 = '\n=======================================\n'
+    map_sudoku_puzzle = split_line
+    
+    for i, cells in enumerate(sudoku_puzzle, 1):
+        map_sudoku_puzzle += '| '
+        
+        for j, cell in enumerate(cells, 1):
+            map_sudoku_puzzle += str(cell) if cell != -1 else ' '
+            map_sudoku_puzzle += ' | ' if j % 3 != 0 or j == 9 else ' || '
+        
+        map_sudoku_puzzle += split_line if i % 3 != 0 or i == 9 else split_line3
+
+    return map_sudoku_puzzle
+
 def is_valid(sudoku_puzzle, n, i, j):
     for x in range(len(sudoku_puzzle[0])):
         if n in (sudoku_puzzle[x][j], sudoku_puzzle[i][x]):
