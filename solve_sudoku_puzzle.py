@@ -33,3 +33,19 @@ def find_next_empty_cell(sudoku_puzzle):
         for j, cell in enumerate(cells):
             if cell == -1:
                 return i, j
+
+def solve_sudoku_puzzle(sudoku_puzzle):
+    empty_cell = find_next_empty_cell(sudoku_puzzle)
+    
+    if not empty_cell:
+        return True, sudoku_puzzle
+    
+    i, j = empty_cell
+    for x in range(1, len(sudoku_puzzle[0]) + 1):
+        if is_valid(sudoku_puzzle, x, i, j):
+            sudoku_puzzle[i][j] = x
+            if solve_sudoku_puzzle(sudoku_puzzle)[0]:
+                return True, sudoku_puzzle
+            sudoku_puzzle[i][j] = -1
+        
+    return False, sudoku_puzzle
