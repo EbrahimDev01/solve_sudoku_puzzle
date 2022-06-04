@@ -49,3 +49,20 @@ def solve_sudoku_puzzle(sudoku_puzzle):
             sudoku_puzzle[i][j] = -1
         
     return False, sudoku_puzzle
+
+
+if __name__ == '__main__':
+    from example_sudoku_puzzles import *
+    for sudoku_puzzle, sudoku_puzzle_name in ((sudoku_puzzle_easy, 'sudoku puzzle easy'),
+                            (sudoku_puzzle_medium, 'sudoku puzzle medium'),
+                            (sudoku_puzzle_hard, 'sudoku puzzle hard'),
+                            (sudoku_puzzle_expert, 'sudoku puzzle expert'),
+                            (sudoku_puzzle_evil, 'sudoku puzzle evil')):
+
+        status, solved_sudoku_puzzle = solve_sudoku_puzzle(sudoku_puzzle_easy)
+
+        if not status:
+            print("I Can't solve this sudoku puzzle")
+
+        print(sudoku_puzzle_name, end='')
+        print(draw_sudoku_puzzle(solved_sudoku_puzzle))
