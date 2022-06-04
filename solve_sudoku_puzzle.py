@@ -11,3 +11,9 @@ def is_valid(sudoku_puzzle, n, i, j):
                 return False
 
     return True
+
+def find_next_empty_cell(sudoku_puzzle):
+    for i, cells in enumerate(sudoku_puzzle):
+        for j, cell in enumerate(cells):
+            if cell == -1:
+                return i, j
